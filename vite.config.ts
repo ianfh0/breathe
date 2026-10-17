@@ -15,17 +15,17 @@ export default defineConfig({
         'icon-maskable-512.png',
       ],
       manifest: {
-        name: 'Breathe',
-        short_name: 'Breathe',
-        description: 'Guided breathing',
+        name: 'Timer',
+        short_name: 'Timer',
+        description: 'Hold and recover',
         lang: 'en',
         id: '/breathe/',
         scope: '/breathe/',
         start_url: '/breathe/',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#12110e',
-        theme_color: '#12110e',
+        background_color: '#0a0a0a',
+        theme_color: '#0a0a0a',
         icons: [
           {
             src: 'icon-192.png',
@@ -48,7 +48,8 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff,woff2,webmanifest,json}'],
+        cacheId: 'breathe-timers-v2',
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest,json}'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
       },
