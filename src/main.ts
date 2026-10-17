@@ -1,8 +1,27 @@
-import { registerSW } from 'virtual:pwa-register'
 import './style.css'
 
-if (import.meta.env.PROD) {
-  registerSW({ immediate: true })
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  let reloading = false
+  const swUrl = `${import.meta.env.BASE_URL}sw.js`
+  const scope = import.meta.env.BASE_URL
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloading) return
+    reloading = true
+    window.location.reload()
+  })
+
+  void navigator.serviceWorker
+    .register(swUrl, { scope, updateViaCache: 'none' })
+    .then((registration) => {
+      const checkForUpdate = () => {
+        void registration.update()
+      }
+      checkForUpdate()
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') checkForUpdate()
+      })
+    })
 }
 
 type Phase = 'hold-idle' | 'hold' | 'recover'

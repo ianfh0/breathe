@@ -5,6 +5,9 @@ export default defineConfig({
   base: '/breathe/',
   plugins: [
     VitePWA({
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.ts',
       registerType: 'autoUpdate',
       injectRegister: false,
       includeAssets: [
@@ -47,11 +50,8 @@ export default defineConfig({
           },
         ],
       },
-      workbox: {
-        cacheId: 'breathe-timers-v2',
+      injectManifest: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest,json}'],
-        navigateFallback: 'index.html',
-        cleanupOutdatedCaches: true,
       },
     }),
   ],
