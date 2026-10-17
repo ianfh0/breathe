@@ -1,0 +1,20 @@
+{
+  "name": "breathe",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort"
+  },
+  "dependencies": {
+    "@fontsource/instrument-sans": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vite-plugin-pwa": "^2.0.0"
+  }
+}
